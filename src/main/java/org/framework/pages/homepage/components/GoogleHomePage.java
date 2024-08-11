@@ -4,12 +4,16 @@ package org.framework.pages.homepage.components;
 import org.framework.base.BasePage;
 import org.framework.utils.propertyreader.PropertyReader;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.locators.RelativeLocator;
 
 public class GoogleHomePage extends BasePage {
-    private By hamburgerMenu = By.id("nav-hamburger-menu");
-    private String subItemMenu = "//a[@data-menu-id='%s']";
+    private By searchBarTextField = By.id("APjFqb");
+
+   private By amazonHomePageLink = RelativeLocator.with(By.tagName("h3")).below(By.xpath("//cite[text()='https://www.amazon.com']"));
+
 
 
     public GoogleHomePage(WebDriver driver) {
@@ -17,26 +21,22 @@ public class GoogleHomePage extends BasePage {
 
     }
 
-
-
     public GoogleHomePage getGoogleHomePage(){
-        driver.get(PropertyReader.getInstance().getProperty("url"));
+        driver.get(PropertyReader.getInstance().getProperty("googleUrl"));
         return this;
     }
-    public GoogleHomePage openHamburgerMenu() {
-        click(hamburgerMenu);
-        return this;
-    }
-    public GoogleHomePage scrollToTVAppliencesElectronics(){
-        WebElement element = driver.findElement(By.xpath(String.format(subItemMenu, String.valueOf(9))));
-        scrollToElement(element);
-        return this;
-    }
-    public GoogleHomePage expandTVAppliencesElectronics() {
-        click(By.xpath(String.format(subItemMenu, String.valueOf(9))));
-        return this;
+    public GoogleHomePage searchAmazon() {
+        typeText(searchBarTextField,"Amazon");
+        new Actions(driver)
+                .keyDown(Keys.ENTER)
+                .perform();
+
+      return this;
     }
 
-
+    public GoogleHomePage selectAmazonFromSearchResult() {
+        click(amazonHomePageLink);
+        return this;
+    }
 
 }

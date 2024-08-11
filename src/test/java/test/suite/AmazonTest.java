@@ -14,7 +14,9 @@ public class AmazonTest extends BaseTest {
     @Test(description = "The test to verify the second highest expensive television's properties")
     public void verifySelectingEGiftCardTest() {
         GoogleHomePage googleHomePage = new GoogleHomePage(getDriver());
-        googleHomePage.getGoogleHomePage();
+        googleHomePage.getGoogleHomePage()
+                .searchAmazon()
+                .selectAmazonFromSearchResult();
 
     }
 
