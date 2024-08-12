@@ -9,7 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-
 import java.util.logging.Logger;
 
 public class AmazonTest extends BaseTest {

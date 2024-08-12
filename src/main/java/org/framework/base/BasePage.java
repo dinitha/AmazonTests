@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Set;
 
 
-
 public class BasePage {
     private final Duration TIMEOUT = Duration.ofSeconds(10);
 
@@ -25,15 +24,15 @@ public class BasePage {
 
     }
 
-       //Type Text
-        public void typeText(By by, String text) {
-            waitVisibility(by).sendKeys(text);
-        }
+    //Type Text
+    public void typeText(By by, String text) {
+        waitVisibility(by).sendKeys(text);
+    }
 
-        //Read Text
-        public String readText(By by) {
-            return waitVisibility(by).getText();
-        }
+    //Read Text
+    public String readText(By by) {
+        return waitVisibility(by).getText();
+    }
 
     public List<WebElement> getElementList(By by) {
         WebElement listItem = driver.findElement(by);
@@ -43,45 +42,47 @@ public class BasePage {
     }
 
     //Wait
-        public WebElement waitVisibility(By by) {
-            return wait.until(ExpectedConditions.presenceOfElementLocated(by));
-        }
+    public WebElement waitVisibility(By by) {
+        return wait.until(ExpectedConditions.presenceOfElementLocated(by));
+    }
 
     public WebElement waitTillClickable(By by) {
         return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
-        public void scrollToElement(WebElement element) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        }
 
-        protected void waitForElementToAppear(By locator) {
-            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        }
+    public void scrollToElement(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 
-        protected void waitForElementToDisappear(By locator) {
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-        }
+    protected void waitForElementToAppear(By locator) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
 
-        protected void waitForTextToDisappear(By locator, String text) {
-            wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(locator, text)));
-        }
+    protected void waitForElementToDisappear(By locator) {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
 
-        public void switchToNewWindow() {
-            //Get handles of the windows
-            String mainWindowHandle = driver.getWindowHandle();
-            Set<String> allWindowHandles = driver.getWindowHandles();
-            Iterator<String> iterator = allWindowHandles.iterator();
+    protected void waitForTextToDisappear(By locator, String text) {
+        wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(locator, text)));
+    }
 
-            // Here we will check if child window has other child windows and will fetch the heading of the child window
-            while (iterator.hasNext()) {
-                String ChildWindow = iterator.next();
-                if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
-                    driver.switchTo().window(ChildWindow);
-                }
+    public void switchToNewWindow() {
+        //Get handles of the windows
+        String mainWindowHandle = driver.getWindowHandle();
+        Set<String> allWindowHandles = driver.getWindowHandles();
+        Iterator<String> iterator = allWindowHandles.iterator();
+
+        // Here we will check if child window has other child windows and will fetch the heading of the child window
+        while (iterator.hasNext()) {
+            String ChildWindow = iterator.next();
+            if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
+                driver.switchTo().window(ChildWindow);
             }
         }
+    }
+
     public void click(By by) {
-      waitTillClickable(by).click();
+        waitTillClickable(by).click();
     }
 
     public void Enter() {
@@ -90,8 +91,6 @@ public class BasePage {
                 .perform();
 
     }
-
-
 
 
 }

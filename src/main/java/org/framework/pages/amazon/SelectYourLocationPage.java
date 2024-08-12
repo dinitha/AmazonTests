@@ -20,6 +20,7 @@ public class SelectYourLocationPage extends BasePage {
     private By doneButton = By.id("a-autoid-3-announce");
 
     private String selectedLocationText;
+
     public SelectYourLocationPage(WebDriver driver) {
         super(driver);
 
@@ -33,7 +34,7 @@ public class SelectYourLocationPage extends BasePage {
         int maxLocationIndex = randomLocationElement.size();
         int minLocationIndex = 0;
         int range = maxLocationIndex - minLocationIndex + 1;
-        int randomIndex = (int)(Math.random() * range) + minLocationIndex;
+        int randomIndex = (int) (Math.random() * range) + minLocationIndex;
         selectedLocationText = randomLocationElement.get(randomIndex).getText();
         randomLocationElement.get(randomIndex).click();
 

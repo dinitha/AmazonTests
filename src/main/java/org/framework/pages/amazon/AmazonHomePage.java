@@ -40,12 +40,12 @@ public class AmazonHomePage extends BasePage {
 
     public Boolean checkDeliverToTextUpdated(String expectedText) {
         Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-       return wait.until(ExpectedConditions.textToBePresentInElementLocated((deliverToLocationText), expectedText));
+        return wait.until(ExpectedConditions.textToBePresentInElementLocated((deliverToLocationText), expectedText));
 
     }
 
     public AmazonHomePage search(String key) {
-        typeText(searchbox,key);
+        typeText(searchbox, key);
         Enter();
         return this;
     }

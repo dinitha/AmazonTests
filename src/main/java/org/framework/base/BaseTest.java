@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeTest;
 
 import java.time.Duration;
 
-public class BaseTest{
+public class BaseTest {
 
     private WebDriver driver;
 
@@ -21,7 +21,7 @@ public class BaseTest{
     public void beforeTest() {
 
         String browser = PropertyReader.getInstance().getProperty("browser");
-        switch (browser){
+        switch (browser) {
             case "chrome":
                 ChromeOptions chromeOptions = new ChromeOptions();
                 driver = new ChromeDriver(chromeOptions);
@@ -38,12 +38,12 @@ public class BaseTest{
 
         }
         driver.manage().window().maximize();
-          driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterTest
     public void afterTest() {
-            driver.quit();
+        driver.quit();
     }
 
     public WebDriver getDriver() {

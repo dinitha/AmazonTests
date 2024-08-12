@@ -12,8 +12,7 @@ import org.openqa.selenium.support.locators.RelativeLocator;
 public class GoogleHomePage extends BasePage {
     private By searchBarTextField = By.id("APjFqb");
 
-   private By amazonHomePageLink = RelativeLocator.with(By.tagName("h3")).below(By.xpath("//cite[text()='https://www.amazon.com']"));
-
+    private By amazonHomePageLink = RelativeLocator.with(By.tagName("h3")).below(By.xpath("//cite[text()='https://www.amazon.com']"));
 
 
     public GoogleHomePage(WebDriver driver) {
@@ -21,14 +20,15 @@ public class GoogleHomePage extends BasePage {
 
     }
 
-    public GoogleHomePage getGoogleHomePage(){
+    public GoogleHomePage getGoogleHomePage() {
         driver.get(PropertyReader.getInstance().getProperty("googleUrl"));
         return this;
     }
+
     public GoogleHomePage searchAmazon() {
-        typeText(searchBarTextField,"Amazon");
+        typeText(searchBarTextField, "Amazon");
         Enter();
-      return this;
+        return this;
     }
 
     public GoogleHomePage selectAmazonFromSearchResult() {
