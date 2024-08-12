@@ -2,6 +2,7 @@ package test.suite;
 
 import org.framework.base.BaseTest;
 import org.framework.pages.amazon.AmazonHomePage;
+import org.framework.pages.amazon.SearchResultsPage;
 import org.framework.pages.amazon.SelectYourLocationPage;
 import org.framework.pages.google.GoogleHomePage;
 import org.testng.Assert;
@@ -30,8 +31,10 @@ public class AmazonTest extends BaseTest {
         selectYourLocationPage.clickDone();
 
         Assert.assertTrue(amazonHomePage.checkDeliverToTextUpdated(selectedLocationName));
+        amazonHomePage.search("e gift card Amazon");
 
-
+        SearchResultsPage searchResultsPage = new SearchResultsPage(getDriver());
+        searchResultsPage.clickGiftCards();
     }
 
 }

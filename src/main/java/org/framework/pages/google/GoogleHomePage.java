@@ -12,7 +12,6 @@ import org.openqa.selenium.support.locators.RelativeLocator;
 public class GoogleHomePage extends BasePage {
     private By searchBarTextField = By.id("APjFqb");
 
-    private By deliverToLocationButton = By.id("nav-global-location-popover-link");
    private By amazonHomePageLink = RelativeLocator.with(By.tagName("h3")).below(By.xpath("//cite[text()='https://www.amazon.com']"));
 
 
@@ -28,10 +27,7 @@ public class GoogleHomePage extends BasePage {
     }
     public GoogleHomePage searchAmazon() {
         typeText(searchBarTextField,"Amazon");
-        new Actions(driver)
-                .keyDown(Keys.ENTER)
-                .perform();
-
+        Enter();
       return this;
     }
 
@@ -40,9 +36,5 @@ public class GoogleHomePage extends BasePage {
         return this;
     }
 
-    public GoogleHomePage clickDeliveryLocation() {
-        click(deliverToLocationButton);
-        return this;
-    }
 
 }
