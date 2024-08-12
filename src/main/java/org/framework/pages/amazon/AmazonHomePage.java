@@ -2,12 +2,13 @@ package org.framework.pages.amazon;
 
 
 import org.framework.base.BasePage;
-import org.framework.utils.propertyreader.PropertyReader;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.locators.RelativeLocator;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class AmazonHomePage extends BasePage {
 
@@ -25,9 +26,10 @@ public class AmazonHomePage extends BasePage {
         return this;
     }
 
-    public String getDeliverToText() {
+    public Boolean checkDeliverToTextUpdated(String expectedText) {
+        Wait<WebDriver> wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+       return wait.until(ExpectedConditions.textToBePresentInElementLocated((deliverToLocationText), expectedText));
 
-        return readText(deliverToLocationText);
     }
 
 }

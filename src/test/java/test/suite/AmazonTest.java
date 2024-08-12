@@ -28,8 +28,8 @@ public class AmazonTest extends BaseTest {
         selectYourLocationPage.selectRandomLocation();
         String selectedLocationName = selectYourLocationPage.getSelectedLocationName();
         selectYourLocationPage.clickDone();
-        String actualLocationName = amazonHomePage.getDeliverToText();
-        Assert.assertEquals(actualLocationName,selectedLocationName);
+
+        Assert.assertTrue(amazonHomePage.checkDeliverToTextUpdated(selectedLocationName));
 
 
     }
